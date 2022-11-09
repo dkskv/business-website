@@ -1,0 +1,28 @@
+<div role="main">
+
+  <div>{{ title }} app is running!</div>
+
+  <!-- <app-main name="passed name"></app-main> -->
+
+  <div>
+    <button (click)="test = 1">
+      Show 1
+    </button>
+
+    <button (click)="test = 2">
+      Show 2
+    </button>
+
+    <button (click)="test = 0">
+      Reset
+    </button>
+  </div>
+
+  <div [ngSwitch]="test">
+    <pre *ngSwitchDefault>Default</pre>
+    <pre *ngSwitchCase="1">1</pre>
+    <pre *ngSwitchCase="2">2</pre>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
