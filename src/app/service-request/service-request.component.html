@@ -1,1 +1,30 @@
-<p>Здесь будет форма</p>
+<form #form="ngForm" [formGroup]="formOfRequest" (ngSubmit)="onSubmit()">
+    <div class="form-item">
+        <label for="name">Услуги: </label>
+        <div class="checkboxes-container">
+            <div *ngFor="let control of serviceListControls; let i = index">
+                <div><input id="i" type="checkbox" [formControl]="control">{{serviceListPreset[i]}}</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-item">
+        <label for="name">Имя: </label>
+        <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div class="form-item">
+        <label for="phone">Номер телефона: </label>
+        <input id="phone" type="text" formControlName="phone" placeholder="8 (999) 123-45-67"
+            (blur)="onPhoneNumberBlur()">
+    </div>
+
+    <div class="form-item">
+        <label for="comment">Комментарий: </label>
+        <textarea id="comment" type="text" formControlName="comment"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="formOfRequest.invalid">Оставить заявку</button>
+
+    <div *ngIf="form.submitted">Ваша заявка принята</div>
+</form>

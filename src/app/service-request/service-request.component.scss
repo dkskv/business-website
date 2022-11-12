@@ -1,0 +1,22 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    row-gap: 40px;
+    padding: 10px;
+}
+
+.form-item {
+    display: flex;
+    flex-direction: column;
+    align-items: "start";
+}
+
+.checkboxes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    height: 150px;
+}
