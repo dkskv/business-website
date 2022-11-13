@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'service-list', component: ServiceListComponent },
   { path: 'service-request', component: ServiceRequestComponent },
+  { path: '', redirectTo: 'service-list', pathMatch: 'full' }
 ];
 
 @NgModule({
