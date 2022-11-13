@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ServicesService } from 'src/services/services.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ServicesService } from 'src/services/services.service';
 })
 export class ServiceListComponent implements OnInit {
 
-  constructor(private _servicesService: ServicesService) { }
+  constructor(private _servicesService: ServicesService, private _router: Router) { }
 
   ngOnInit(): void {
   }
@@ -17,4 +18,7 @@ export class ServiceListComponent implements OnInit {
     return this._servicesService.items;
   }
 
+  onOrder(service: string) {
+    this._router.navigate(["/service-request"], { state: { service } });
+  }
 }

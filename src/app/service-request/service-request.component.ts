@@ -11,7 +11,7 @@ import { ServicesService } from 'src/services/services.service';
 })
 export class ServiceRequestComponent implements OnInit {
   formOfRequest = new FormGroup({
-    serviceList: new FormControl("", [Validators.required]),
+    serviceList: new FormControl<string[]>([], [Validators.required]),
     name: new FormControl("", [
       Validators.required,
       Validators.minLength(1),
@@ -24,6 +24,9 @@ export class ServiceRequestComponent implements OnInit {
   constructor(private _snackBar: MatSnackBar, private _servicesService: ServicesService) { }
 
   ngOnInit() {
+    const initialServiceList = this.serviceList.filter((service) => service === window.history.state.service);
+    this.formOfRequest.controls.serviceList.setValue(initialServiceList);
+
     this.phoneControl.valueChanges
       .pipe(
         startWith(this.phoneControl.value),

@@ -2,11 +2,8 @@
     <div class="content">
         <div>
             <ng-container *ngFor="let route of routes">
-                <ng-container [ngSwitch]="rla.isActive" routerLinkActive #rla="routerLinkActive">
-                    <button *ngSwitchCase="1" mat-button color="primary"
-                        routerLink="{{route.link}}">{{route.label}}</button>
-                    <button *ngSwitchDefault mat-button routerLink="{{route.link}}">{{route.label}}</button>
-                </ng-container>
+                <button routerLinkActive #rla="routerLinkActive" mat-button color="{{rla.isActive ? 'primary' : ''}}"
+                    routerLink="{{route.link}}">{{route.label}}</button>
             </ng-container>
         </div>
         <div class="contacts">
