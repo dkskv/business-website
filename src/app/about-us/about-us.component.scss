@@ -29,16 +29,19 @@
 .benefits {
     display: flex;
     column-gap: 24px;
+    row-gap: 24px;
     padding: 50px 16px;
     width: 75%;
     color: #0000008a;
+    flex-wrap: wrap;
 }
 
 .benefits-column {
     display: flex;
     flex-direction: column;
     row-gap: 16px;
-    width: 32%;
+    flex-basis: 300px;
+    flex-grow: 1;
 }
 
 .benefit-title {
