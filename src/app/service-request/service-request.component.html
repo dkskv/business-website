@@ -1,29 +1,31 @@
 <div class="container">
-    <form #formDirective="ngForm" [formGroup]="formOfRequest" (ngSubmit)="onSubmit(formDirective)">
-        <mat-form-field appearance="fill">
-            <mat-label>Услуги</mat-label>
-            <mat-select formControlName="serviceList" multiple>
-                <mat-option *ngFor="let service of serviceList" [value]="service">{{service}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <div class="form-container">
+        <form #formDirective="ngForm" [formGroup]="formOfRequest" (ngSubmit)="onSubmit(formDirective)">
+            <mat-form-field appearance="fill">
+                <mat-label>Услуги</mat-label>
+                <mat-select formControlName="serviceList" multiple>
+                    <mat-option *ngFor="let service of serviceList" [value]="service">{{service}}</mat-option>
+                </mat-select>
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Имя</mat-label>
-            <input matInput placeholder="Имя" formControlName="name">
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Имя</mat-label>
+                <input matInput placeholder="Имя" formControlName="name">
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Номер телефона</mat-label>
-            <input matInput placeholder="8 (999) 123-45-67" formControlName="phone" (blur)="onPhoneNumberBlur()">
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Номер телефона</mat-label>
+                <input matInput placeholder="8 (999) 123-45-67" formControlName="phone" (blur)="onPhoneNumberBlur()">
+            </mat-form-field>
 
-        <mat-form-field appearance="fill">
-            <mat-label>Комментарий</mat-label>
-            <textarea rows="4" matInput placeholder="Комментарий" formControlName="comment"></textarea>
-        </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Комментарий</mat-label>
+                <textarea rows="4" matInput placeholder="Комментарий" formControlName="comment"></textarea>
+            </mat-form-field>
 
 
-        <button type="submit " mat-raised-button color="primary" [disabled]="formOfRequest.invalid">Оставить
-            заявку</button>
-    </form>
+            <button type="submit " mat-raised-button color="primary" [disabled]="formOfRequest.invalid">Оставить
+                заявку</button>
+        </form>
+    </div>
 </div>
