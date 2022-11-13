@@ -1,1 +1,17 @@
-<p>service-list works!</p>
+<div class="container">
+    <ng-container *ngFor="let service of serviceList">
+        <div class="card">
+            <mat-card>
+                <mat-card-title>{{service}}</mat-card-title>
+                <mat-card-subtitle>пояснение</mat-card-subtitle>
+                <mat-card-content>
+                    <p>This card indeterminates progress bar.</p>
+                    <!-- <p>{{longText}}</p> -->
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>Заказать</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </ng-container>
+</div>

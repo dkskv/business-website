@@ -1,28 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { map, scan, startWith } from 'rxjs';
 import { parsePhoneNumber } from 'src/utils/parsePhoneNumber';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ServicesService } from 'src/services/services.service';
 @Component({
   selector: 'app-service-request',
   templateUrl: './service-request.component.html',
   styleUrls: ['./service-request.component.scss']
 })
 export class ServiceRequestComponent implements OnInit {
-  serviceListPreset = [
-    "Покраска",
-    "Теплый пол",
-    "Возведение стен",
-    "Малярка",
-    "Штукатурка",
-    "Клининг",
-    "Под ключ",
-    "Двери",
-    "Кровля"
-  ]
-
   formOfRequest = new FormGroup({
-    serviceList: new FormArray(this.serviceListPreset.map(() => new FormControl(false))),
+    serviceList: new FormControl("", [Validators.required]),
     name: new FormControl("", [
       Validators.required,
       Validators.minLength(1),
@@ -32,7 +21,7 @@ export class ServiceRequestComponent implements OnInit {
     comment: new FormControl("")
   });
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar, private _servicesService: ServicesService) { }
 
   ngOnInit() {
     this.phoneControl.valueChanges
@@ -47,23 +36,25 @@ export class ServiceRequestComponent implements OnInit {
   }
 
   onPhoneNumberBlur() {
-    this.phoneControl.setValue(parsePhoneNumber(this.phoneControl.value ?? ""));
-  }
-
-  onSubmit() {
-    if (this.formOfRequest.valid) {
-      const sendingValue = {
-        ...this.formOfRequest.value,
-        serviceList: this.serviceListPreset
-          .filter((_, i) => this.formOfRequest.value.serviceList?.[i])
-      }
-
-      console.log(sendingValue);
+    const { value } = this.phoneControl;
+    if (value) {
+      this.phoneControl.setValue(parsePhoneNumber(value));
     }
   }
 
-  get serviceListControls() {
-    return this.formOfRequest.controls.serviceList.controls;
+  onSubmit(formDirective: FormGroupDirective) {
+    if (this.formOfRequest.valid) {
+      const { value } = this.formOfRequest;
+      this._snackBar.open(`${value.name}, Ваша заявка принята!`);
+
+      console.log(this.formOfRequest.value);
+
+      formDirective.resetForm();
+    }
+  }
+
+  get serviceList() {
+    return this._servicesService.items;
   }
 
   private get phoneControl() {

@@ -1,5 +1,17 @@
-<div class="container">
-    <div *ngFor="let route of routes">
-        <div class="link" routerLink="{{route.link}}">{{route.label}}</div>
+<mat-toolbar>
+    <div class="content">
+        <div>
+            <ng-container *ngFor="let route of routes">
+                <ng-container [ngSwitch]="rla.isActive" routerLinkActive #rla="routerLinkActive">
+                    <button *ngSwitchCase="1" mat-button color="primary"
+                        routerLink="{{route.link}}">{{route.label}}</button>
+                    <button *ngSwitchDefault mat-button routerLink="{{route.link}}">{{route.label}}</button>
+                </ng-container>
+            </ng-container>
+        </div>
+        <div class="contacts">
+            <mat-icon>phone</mat-icon>
+            <div>+7 (xxx) xxx-xx-xx</div>
+        </div>
     </div>
-</div>
+</mat-toolbar>

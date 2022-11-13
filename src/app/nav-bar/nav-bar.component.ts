@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 export class NavBarComponent {
   routes = [
     { link: "/about-us", label: "О нас" },
-    { link: "/portfolio", label: "Наши работы" },
     { link: "/service-list", label: "Список услуг" },
     { link: "/service-request", label: "Оставить заявку" },
   ];
