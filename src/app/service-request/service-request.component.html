@@ -1,4 +1,4 @@
-<div class="container">
+<app-layout title="{{title}}">
     <div class="form-container">
         <form #formDirective="ngForm" [formGroup]="formOfRequest" (ngSubmit)="onSubmit(formDirective)">
             <mat-form-field appearance="fill">
@@ -24,8 +24,8 @@
             </mat-form-field>
 
 
-            <button type="submit " mat-raised-button color="primary" [disabled]="formOfRequest.invalid">Оставить
-                заявку</button>
+            <button type="submit " mat-raised-button color="primary"
+                [disabled]="formOfRequest.invalid">Отправить</button>
         </form>
     </div>
-</div>
+</app-layout>

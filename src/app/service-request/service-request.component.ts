@@ -10,6 +10,8 @@ import { ServicesService } from 'src/services/services.service';
   styleUrls: ['./service-request.component.scss']
 })
 export class ServiceRequestComponent implements OnInit {
+  title = "Оставить заявку";
+
   formOfRequest = new FormGroup({
     serviceList: new FormControl<string[]>([], [Validators.required]),
     name: new FormControl("", [

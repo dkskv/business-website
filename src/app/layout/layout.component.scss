@@ -1,0 +1,15 @@
+.header {
+    height: 80px;
+    // брать из темы
+    background-color: #3f51b5;
+    padding-left: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.content {
+    padding: 20px 20px;
+}

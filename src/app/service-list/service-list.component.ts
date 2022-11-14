@@ -8,6 +8,7 @@ import { ServicesService } from 'src/services/services.service';
   styleUrls: ['./service-list.component.scss']
 })
 export class ServiceListComponent implements OnInit {
+  title = "Список услуг";
 
   constructor(private _servicesService: ServicesService, private _router: Router) { }
 
