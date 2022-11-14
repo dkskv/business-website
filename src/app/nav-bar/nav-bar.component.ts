@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,5 +13,13 @@ export class NavBarComponent {
     { link: "/service-request", label: "Оставить заявку" },
   ];
 
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
+
+  phoneNumber = "+7 (xxx) xxx-xx-xx";
+
+  onPhoneClick() {
+    navigator.clipboard.writeText(this.phoneNumber).then(() => {
+      this._snackBar.open("Номер скопирован!", undefined, { duration: 1000 });
+    });
+  }
 }

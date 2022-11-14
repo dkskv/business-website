@@ -50,7 +50,7 @@ export class ServiceRequestComponent implements OnInit {
   onSubmit(formDirective: FormGroupDirective) {
     if (this.formOfRequest.valid) {
       const { value } = this.formOfRequest;
-      this._snackBar.open(`${value.name}, Ваша заявка принята!`);
+      this._snackBar.open(`${value.name}, Ваша заявка принята!`, undefined, { duration: 3000 });
 
       console.log(this.formOfRequest.value);
 
@@ -60,6 +60,12 @@ export class ServiceRequestComponent implements OnInit {
 
   get serviceList() {
     return this._servicesService.items;
+  }
+
+  get fillProgress() {
+    const controls = Object.values(this.formOfRequest.controls);
+    const validCount = controls.reduce((sum, item) => sum + Number(item.valid), 0)
+    return validCount / controls.length * 100;
   }
 
   private get phoneControl() {

@@ -1,3 +1,9 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
 .header {
     height: 80px;
     // брать из темы
@@ -8,8 +14,14 @@
     align-items: center;
     font-weight: 300;
     font-size: 20px;
+    flex-shrink: 0;
 }
 
 .content {
+    flex-grow: 1;
     padding: 20px 20px;
+
+    @media screen and (max-width: 768px) {
+        padding: 20px 8px;
+    }
 }

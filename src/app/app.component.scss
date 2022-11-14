@@ -1,12 +1,15 @@
 .nav-bar {
+    height: 65px;
     width: 100%;
     position: fixed;
     z-index: 1;
     box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
 }
 
-.layout {
-    margin-top: 64px;
+.main-layout {
+    height: 100%;
+    padding-top: 64px;
+    box-sizing: border-box;
     overflow-y: auto;
 }
 

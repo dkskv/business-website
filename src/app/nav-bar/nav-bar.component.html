@@ -1,14 +1,16 @@
-<mat-toolbar class="nav-bar">
-    <div class="content">
-        <div>
-            <ng-container *ngFor="let route of routes">
-                <button routerLinkActive #rla="routerLinkActive" mat-button color="{{rla.isActive ? 'primary' : ''}}"
-                    routerLink="{{route.link}}">{{route.label}}</button>
-            </ng-container>
-        </div>
-        <div class="contacts">
-            <mat-icon>phone</mat-icon>
-            <div>+7 (xxx) xxx-xx-xx</div>
-        </div>
+<div class="container">
+    <div class="tabs">
+        <ng-container *ngFor="let route of routes; let i = index">
+            <button routerLinkActive #rla="routerLinkActive" mat-button color="{{rla.isActive ? 'primary' : ''}}"
+                routerLink="{{route.link}}">
+                <mat-icon *ngIf="i === 0" class="main-icon">roofing</mat-icon>{{route.label}}
+            </button>
+        </ng-container>
     </div>
-</mat-toolbar>
+    <div class="contacts">
+        <button class="phone-number" mat-button (click)="onPhoneClick()">
+            <mat-icon class="phone-icon">phone</mat-icon>
+            <span>{{phoneNumber}}</span>
+        </button>
+    </div>
+</div>
