@@ -1,4 +1,10 @@
+.masonry {
+  column-gap: 16px;
+}
+
 .card {
+  display: inline-block;
+  width: 100%;
   margin-bottom: 16px;
   box-sizing: border-box;
 }

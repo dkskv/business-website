@@ -10,15 +10,7 @@ import { ProvidedServicesService } from 'src/services/providedServices.service';
 })
 export class ServiceListComponent implements OnInit {
   title = 'Список услуг';
-
-  private _columnCount = 1;
-  private _xGutter = 16;
-
-  masonryOptions = {
-    gutter: this._xGutter,
-    percentPosition: true,
-    animations: {},
-  };
+  columnCount = 1;
 
   constructor(
     private _providedServicesService: ProvidedServicesService,
@@ -30,19 +22,12 @@ export class ServiceListComponent implements OnInit {
     this._breakpointObserver
       .observe([Breakpoints.XSmall, Breakpoints.Small])
       .subscribe(({ breakpoints }) => {
-        this._columnCount = breakpoints[Breakpoints.XSmall]
+        this.columnCount = breakpoints[Breakpoints.XSmall]
           ? 1
           : breakpoints[Breakpoints.Small]
           ? 2
           : 4;
       });
-  }
-
-  get cardWidth() {
-    const basePercents = 100 / this._columnCount;
-    const guttersSum = this._xGutter * (this._columnCount - 1);
-    const gutterSubtraction = guttersSum / this._columnCount;
-    return `calc(${basePercents}% - ${gutterSubtraction}px)`;
   }
 
   get serviceList() {

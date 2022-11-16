@@ -16,7 +16,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { LayoutComponent } from './layout/layout.component';
-import { NgxMasonryModule } from 'ngx-masonry';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { NgxMasonryModule } from 'ngx-masonry';
     MatCardModule,
     MatIconModule,
     MatProgressBarModule,
-    NgxMasonryModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,11 +1,6 @@
 <app-layout title="{{ title }}">
-  <ngx-masonry [options]="masonryOptions">
-    <mat-card
-      ngxMasonryItem
-      class="card"
-      *ngFor="let service of serviceList"
-      [style.width]="cardWidth"
-    >
+  <div class="masonry" [style.column-count]="columnCount">
+    <mat-card class="card" *ngFor="let service of serviceList">
       <mat-card-title>{{ service.name }}</mat-card-title>
       <mat-card-subtitle>пояснение</mat-card-subtitle>
       <mat-card-content>
@@ -17,5 +12,5 @@
         </button>
       </mat-card-actions>
     </mat-card>
-  </ngx-masonry>
+  </div>
 </app-layout>
