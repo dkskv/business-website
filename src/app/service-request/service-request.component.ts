@@ -7,7 +7,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { map, scan, startWith } from 'rxjs';
-import { parsePhoneNumber } from 'src/utils/parsePhoneNumber';
+import {
+  parsePhoneNumber,
+  phoneNumberPattern,
+} from 'src/utils/parsePhoneNumber';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProvidedServicesService } from 'src/services/providedServices.service';
 @Component({
@@ -21,13 +24,16 @@ export class ServiceRequestComponent implements OnInit {
   formOfRequest = new FormGroup({
     serviceList: new FormControl<string[]>([], [Validators.required]),
     name: new FormControl('', [Validators.required, Validators.minLength(1)]),
-    phone: new FormControl('', [Validators.required]),
+    phone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(phoneNumberPattern),
+    ]),
     comment: new FormControl(''),
   });
 
   constructor(
-    private _snackBar: MatSnackBar,
-    private _providedServicesService: ProvidedServicesService
+    private snackBar: MatSnackBar,
+    private providedServicesService: ProvidedServicesService
   ) {}
 
   ngOnInit() {
@@ -60,7 +66,7 @@ export class ServiceRequestComponent implements OnInit {
   onSubmit(formDirective: FormGroupDirective) {
     if (this.formOfRequest.valid) {
       const { value } = this.formOfRequest;
-      this._snackBar.open(`${value.name}, Ваша заявка принята!`, undefined, {
+      this.snackBar.open(`${value.name}, Ваша заявка принята!`, undefined, {
         duration: 3000,
       });
 
@@ -71,7 +77,7 @@ export class ServiceRequestComponent implements OnInit {
   }
 
   get serviceList() {
-    return this._providedServicesService.items;
+    return this.providedServicesService.items;
   }
 
   get fillProgress() {
