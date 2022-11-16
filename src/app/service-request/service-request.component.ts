@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormControl,
   FormGroup,
   FormGroupDirective,
@@ -75,11 +76,22 @@ export class ServiceRequestComponent implements OnInit {
 
   get fillProgress() {
     const controls = Object.values(this.formOfRequest.controls);
-    const validCount = controls.reduce(
-      (sum, item) => sum + Number(item.valid),
+
+    const validatedCount = controls.reduce(
+      (sum, item) => sum + Number(this.isFieldRequired(item)),
       0
     );
-    return (validCount / controls.length) * 100;
+
+    const validCount = controls.reduce(
+      (sum, item) => sum + Number(item.valid && this.isFieldRequired(item)),
+      0
+    );
+
+    return (validCount / validatedCount) * 100;
+  }
+
+  private isFieldRequired(control: FormControl) {
+    return control.validator?.({} as AbstractControl)?.['required'] ?? false;
   }
 
   private get phoneControl() {

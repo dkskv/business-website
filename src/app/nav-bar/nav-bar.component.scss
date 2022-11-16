@@ -1,39 +1,39 @@
 .container {
-    padding: 0px 16px;
-    height: 100%;
-    box-sizing: border-box;
-    background: whitesmoke;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  padding: 0px 16px;
+  height: 100%;
+  box-sizing: border-box;
+  background: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    @media screen and (max-width: 768px) {
-        padding: 4px 8px 0px;
-        flex-direction: column-reverse;
-    }
+  @media screen and (max-width: 768px) {
+    padding: 4px 8px 0px;
+    flex-direction: column-reverse;
+  }
 }
 
 .tabs {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .contacts {
-    width: 100%;
-    display: flex;
-    justify-content: end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .phone-number {
-    font-size: 13px;
-    font-weight: 300;
-    line-height: 1.2;
-    padding: 0 8px;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.2;
+  padding: 0 8px;
 }
 
 .main-icon {
-    vertical-align: sub !important;
+  vertical-align: sub !important;
 }
 
 .phone-icon {
-    transform: scale(0.7)
+  transform: scale(0.7);
 }
