@@ -1,18 +1,21 @@
-<app-layout title="{{title}}">
-    <div class="cards-container">
-        <ng-container *ngFor="let service of serviceList">
-            <div class="card">
-                <mat-card>
-                    <mat-card-title>{{service}}</mat-card-title>
-                    <mat-card-subtitle>пояснение</mat-card-subtitle>
-                    <mat-card-content>
-                        <p>Описание услуги</p>
-                    </mat-card-content>
-                    <mat-card-actions>
-                        <button mat-stroked-button (click)="onOrder(service)">Заказать</button>
-                    </mat-card-actions>
-                </mat-card>
-            </div>
-        </ng-container>
-    </div>
+<app-layout title="{{ title }}">
+  <ngx-masonry [options]="masonryOptions">
+    <mat-card
+      ngxMasonryItem
+      class="card"
+      *ngFor="let service of serviceList"
+      [style.width]="cardWidth"
+    >
+      <mat-card-title>{{ service.name }}</mat-card-title>
+      <mat-card-subtitle>пояснение</mat-card-subtitle>
+      <mat-card-content>
+        {{ service.description }}
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-stroked-button (click)="onOrder(service.name)">
+          Заказать
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </ngx-masonry>
 </app-layout>

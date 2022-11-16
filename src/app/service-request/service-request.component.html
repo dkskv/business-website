@@ -1,35 +1,60 @@
-<app-layout title="{{title}}">
-    <div class="container">
-        <div class="form-container">
-            <mat-progress-bar mode="determinate" value="{{fillProgress}}"></mat-progress-bar>
-            <form #formDirective="ngForm" [formGroup]="formOfRequest" (ngSubmit)="onSubmit(formDirective)">
-                <mat-form-field appearance="fill">
-                    <mat-label>Услуги</mat-label>
-                    <mat-select formControlName="serviceList" multiple>
-                        <mat-option *ngFor="let service of serviceList" [value]="service">{{service}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+<app-layout title="{{ title }}">
+  <div class="container">
+    <div class="form-container">
+      <mat-progress-bar
+        mode="determinate"
+        value="{{ fillProgress }}"
+      ></mat-progress-bar>
+      <form
+        #formDirective="ngForm"
+        [formGroup]="formOfRequest"
+        (ngSubmit)="onSubmit(formDirective)"
+      >
+        <mat-form-field appearance="fill">
+          <mat-label>Услуги</mat-label>
+          <mat-select formControlName="serviceList" multiple>
+            <mat-option
+              *ngFor="let service of serviceList"
+              [value]="service.name"
+              >{{ service.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Имя</mat-label>
-                    <input matInput placeholder="Имя" formControlName="name">
-                </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Имя</mat-label>
+          <input matInput placeholder="Имя" formControlName="name" />
+        </mat-form-field>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Номер телефона</mat-label>
-                    <input matInput placeholder="8 (999) 123-45-67" formControlName="phone"
-                        (blur)="onPhoneNumberBlur()">
-                </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Номер телефона</mat-label>
+          <input
+            matInput
+            placeholder="8 (999) 123-45-67"
+            formControlName="phone"
+            (blur)="onPhoneNumberBlur()"
+          />
+        </mat-form-field>
 
-                <mat-form-field appearance="fill">
-                    <mat-label>Комментарий</mat-label>
-                    <textarea rows="4" matInput placeholder="Комментарий" formControlName="comment"></textarea>
-                </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Комментарий</mat-label>
+          <textarea
+            rows="4"
+            matInput
+            placeholder="Комментарий"
+            formControlName="comment"
+          ></textarea>
+        </mat-form-field>
 
-
-                <button type="submit" mat-raised-button color="primary"
-                    [disabled]="formOfRequest.invalid">Отправить</button>
-            </form>
-        </div>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="formOfRequest.invalid"
+        >
+          Отправить
+        </button>
+      </form>
     </div>
+  </div>
 </app-layout>
