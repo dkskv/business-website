@@ -13,13 +13,13 @@ export class ServiceListComponent implements OnInit {
   columnCount = 1;
 
   constructor(
-    private _providedServicesService: ProvidedServicesService,
-    private _router: Router,
-    private _breakpointObserver: BreakpointObserver
+    private providedServicesService: ProvidedServicesService,
+    private router: Router,
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
-    this._breakpointObserver
+    this.breakpointObserver
       .observe([Breakpoints.XSmall, Breakpoints.Small])
       .subscribe(({ breakpoints }) => {
         this.columnCount = breakpoints[Breakpoints.XSmall]
@@ -31,10 +31,10 @@ export class ServiceListComponent implements OnInit {
   }
 
   get serviceList() {
-    return this._providedServicesService.items;
+    return this.providedServicesService.items;
   }
 
   onOrder(serviceName: string) {
-    this._router.navigate(['/service-request'], { state: { serviceName } });
+    this.router.navigate(['/service-request'], { state: { serviceName } });
   }
 }
