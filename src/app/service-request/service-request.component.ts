@@ -8,9 +8,9 @@ import {
 } from '@angular/forms';
 import { map, scan, startWith } from 'rxjs';
 import {
-  parsePhoneNumber,
+  formatPhoneNumber,
   phoneNumberPattern,
-} from 'src/utils/parsePhoneNumber';
+} from 'src/utils/phoneNumberFormatter';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProvidedServicesService } from 'src/services/providedServices.service';
 @Component({
@@ -48,7 +48,7 @@ export class ServiceRequestComponent implements OnInit {
         startWith(this.phoneControl.value),
         map((a) => a ?? ''),
         scan((prev, next) =>
-          next.startsWith(prev) ? parsePhoneNumber(next) : next
+          next.startsWith(prev) ? formatPhoneNumber(next) : next
         )
       )
       .subscribe((value) => {
@@ -59,7 +59,7 @@ export class ServiceRequestComponent implements OnInit {
   onPhoneNumberBlur() {
     const { value } = this.phoneControl;
     if (value) {
-      this.phoneControl.setValue(parsePhoneNumber(value));
+      this.phoneControl.setValue(formatPhoneNumber(value));
     }
   }
 

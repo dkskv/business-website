@@ -7,7 +7,7 @@ function parseDigits(input: string) {
     .filter(isFinite);
 }
 
-export function parsePhoneNumber(input: string): string {
+export function formatPhoneNumber(input: string): string {
   const mask = input.startsWith('+')
     ? '+x (xxx) xxx-xx-xx'
     : 'x (xxx) xxx-xx-xx';
