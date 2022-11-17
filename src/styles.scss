@@ -44,3 +44,12 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// Отключение zoom'а в мобильных устройствах при фокусе на полях
+input,
+textarea,
+select {
+  @media (max-width: 768px) {
+    font-size: 16px !important;
+  }
+}
