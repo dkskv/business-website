@@ -1,7 +1,7 @@
 <app-layout title="{{ title }}">
   <div class="masonry" [style.column-count]="columnCount">
     <ng-container *ngIf="!loading">
-      <mat-card class="card" *ngFor="let service of serviceList">
+      <mat-card class="masonry__card" *ngFor="let service of serviceList">
         <mat-card-title>{{ service.name }}</mat-card-title>
         <mat-card-subtitle>пояснение</mat-card-subtitle>
         <mat-card-content>
@@ -16,7 +16,7 @@
     </ng-container>
     <ng-container *ngIf="loading">
       <mat-card
-        class="card"
+        class="masonry__card"
         *ngFor="let item of [].constructor(16); let i = index"
       >
         <div>

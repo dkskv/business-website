@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="tabs">
+<div class="nav-bar">
+  <div class="menu">
     <ng-container *ngFor="let route of routes; let i = index">
       <button
         routerLinkActive
@@ -8,15 +8,15 @@
         color="{{ rla.isActive ? 'primary' : '' }}"
         routerLink="{{ route.link }}"
       >
-        <mat-icon *ngIf="i === 0" class="main-icon">roofing</mat-icon
+        <mat-icon *ngIf="i === 0" class="menu__icon">roofing</mat-icon
         >{{ route.label }}
       </button>
     </ng-container>
   </div>
   <div class="contacts">
-    <a href="tel:{{ phoneNumber }}" class="phone-link">
-      <button class="phone-number" mat-button>
-        <mat-icon class="phone-icon">phone</mat-icon>
+    <a href="tel:{{ phoneNumber }}" class="contacts__phone">
+      <button class="contacts__phone__button" mat-button>
+        <mat-icon class="contacts__phone__icon">phone</mat-icon>
         <span>{{ formattedPhoneNumber }}</span>
       </button>
     </a>

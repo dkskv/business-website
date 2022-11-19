@@ -1,11 +1,12 @@
 <app-layout title="{{ title }}">
-  <div class="container">
-    <div class="form-container">
+  <div class="wrapper">
+    <div class="ground">
       <mat-progress-bar
         mode="determinate"
         value="{{ fillProgress }}"
       ></mat-progress-bar>
       <form
+        class="form-container"
         #formDirective="ngForm"
         [formGroup]="formOfRequest"
         (ngSubmit)="onSubmit(formDirective)"
@@ -52,7 +53,7 @@
           color="primary"
           [disabled]="formOfRequest.invalid || submitting"
         >
-          <div class="submit-button-content">
+          <div class="submit-button__content">
             <mat-spinner *ngIf="submitting" diameter="15"></mat-spinner>
             Отправить
           </div>

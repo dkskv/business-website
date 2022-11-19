@@ -10,24 +10,24 @@
   color: white;
 }
 
-.banner-title {
+.banner__title {
   // font-size: 56px;
   line-height: 56px;
   font-weight: 700;
   font-size: calc(32px + 2vw);
 }
 
-.banner-description {
+.banner__description {
   font-size: 20px;
   font-weight: 300;
 }
 
-.content {
+.wrapper {
   display: flex;
   justify-content: center;
 }
 
-.benefits {
+.benefits-columns {
   display: flex;
   column-gap: 24px;
   row-gap: 24px;
@@ -41,7 +41,7 @@
   }
 }
 
-.benefits-column {
+.benefit {
   display: flex;
   flex-direction: column;
   row-gap: 16px;
@@ -49,11 +49,11 @@
   flex-grow: 1;
 }
 
-.benefit-title {
+.benefit__title {
   font-size: 25px;
 }
 
-.benefit-description {
+.benefit__description {
   font-size: 16px;
   line-height: 28px;
 }

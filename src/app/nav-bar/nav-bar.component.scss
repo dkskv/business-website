@@ -1,4 +1,4 @@
-.container {
+.nav-bar {
   padding: 0px 16px;
   height: 100%;
   box-sizing: border-box;
@@ -13,8 +13,12 @@
   }
 }
 
-.tabs {
+.menu {
   flex-shrink: 0;
+}
+
+.menu__icon {
+  vertical-align: sub !important;
 }
 
 .contacts {
@@ -23,21 +27,17 @@
   justify-content: flex-end;
 }
 
-.phone-number {
+.contacts__phone {
+  color: black;
+}
+
+.contacts__phone__button {
   font-size: 13px;
   font-weight: 300;
   line-height: 1.2;
   padding: 0 8px;
 }
 
-.main-icon {
-  vertical-align: sub !important;
-}
-
-.phone-icon {
+.contacts__phone__icon {
   transform: scale(0.7);
-}
-
-.phone-link {
-  color: black;
 }
