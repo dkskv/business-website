@@ -1,55 +1,59 @@
 .banner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    row-gap: 16px;
-    // брать из темы
-    background-color: #3f51b5;
-    height: 300px;
-    color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 16px;
+  // брать из темы
+  background-color: #3f51b5;
+  height: 300px;
+  color: white;
 }
 
 .banner-title {
-    // font-size: 56px;
-    line-height: 56px;
-    font-weight: 700;
-    font-size: calc(32px + 2vw)
+  // font-size: 56px;
+  line-height: 56px;
+  font-weight: 700;
+  font-size: calc(32px + 2vw);
 }
 
 .banner-description {
-    font-size: 20px;
-    font-weight: 300;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 .content {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .benefits {
-    display: flex;
-    column-gap: 24px;
-    row-gap: 24px;
-    padding: 50px 16px;
-    width: 75%;
-    color: #0000008a;
-    flex-wrap: wrap;
+  display: flex;
+  column-gap: 24px;
+  row-gap: 24px;
+  padding: 50px 16px;
+  color: #0000008a;
+  flex-wrap: wrap;
+  width: 75%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .benefits-column {
-    display: flex;
-    flex-direction: column;
-    row-gap: 16px;
-    flex-basis: 300px;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  flex-basis: 300px;
+  flex-grow: 1;
 }
 
 .benefit-title {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .benefit-description {
-    font-size: 16px;
-    line-height: 28px;
+  font-size: 16px;
+  line-height: 28px;
 }
