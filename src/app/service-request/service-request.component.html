@@ -50,9 +50,12 @@
           type="submit"
           mat-raised-button
           color="primary"
-          [disabled]="formOfRequest.invalid"
+          [disabled]="formOfRequest.invalid || submitting"
         >
-          Отправить
+          <div class="submit-button-content">
+            <mat-spinner *ngIf="submitting" diameter="15"></mat-spinner>
+            Отправить
+          </div>
         </button>
       </form>
     </div>

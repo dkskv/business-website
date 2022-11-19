@@ -19,6 +19,10 @@ export class ServiceListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    if (!this.providedServicesService.loaded) {
+      this.providedServicesService.load();
+    }
+
     this.breakpointObserver
       .observe([Breakpoints.XSmall, Breakpoints.Small])
       .subscribe(({ breakpoints }) => {
@@ -28,6 +32,10 @@ export class ServiceListComponent implements OnInit {
           ? 2
           : 4;
       });
+  }
+
+  get loading() {
+    return this.providedServicesService.loading;
   }
 
   get serviceList() {

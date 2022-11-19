@@ -6,13 +6,14 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
-import { map, scan, startWith } from 'rxjs';
+import { map, scan, startWith, tap } from 'rxjs';
 import {
   formatPhoneNumber,
   phoneNumberPattern,
 } from 'src/utils/phoneNumberFormatter';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProvidedServicesService } from 'src/services/providedServices.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-service-request',
   templateUrl: './service-request.component.html',
@@ -20,6 +21,7 @@ import { ProvidedServicesService } from 'src/services/providedServices.service';
 })
 export class ServiceRequestComponent implements OnInit {
   title = 'Оставить заявку';
+  submitting = false;
 
   formOfRequest = new FormGroup({
     serviceList: new FormControl<string[]>([], [Validators.required]),
@@ -33,10 +35,15 @@ export class ServiceRequestComponent implements OnInit {
 
   constructor(
     private snackBar: MatSnackBar,
-    private providedServicesService: ProvidedServicesService
+    private providedServicesService: ProvidedServicesService,
+    private http: HttpClient
   ) {}
 
   ngOnInit() {
+    if (!this.providedServicesService.loaded) {
+      this.providedServicesService.load();
+    }
+
     const initialServiceNames = this.serviceList
       .map(({ name }) => name)
       .filter((name) => name === window.history.state.serviceName);
@@ -66,13 +73,22 @@ export class ServiceRequestComponent implements OnInit {
   onSubmit(formDirective: FormGroupDirective) {
     if (this.formOfRequest.valid) {
       const { value } = this.formOfRequest;
-      this.snackBar.open(`${value.name}, Ваша заявка принята!`, undefined, {
-        duration: 3000,
-      });
 
-      console.log(this.formOfRequest.value);
+      this.submitting = true;
 
-      formDirective.resetForm();
+      this.http
+        .post('/service-request', value)
+        .pipe(
+          tap(() => {
+            this.submitting = false;
+          })
+        )
+        .subscribe(() => {
+          this.snackBar.open(`${value.name}, Ваша заявка принята!`, undefined, {
+            duration: 3000,
+          });
+          formDirective.resetForm();
+        });
     }
   }
 

@@ -1,16 +1,47 @@
 <app-layout title="{{ title }}">
   <div class="masonry" [style.column-count]="columnCount">
-    <mat-card class="card" *ngFor="let service of serviceList">
-      <mat-card-title>{{ service.name }}</mat-card-title>
-      <mat-card-subtitle>пояснение</mat-card-subtitle>
-      <mat-card-content>
-        {{ service.description }}
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-stroked-button (click)="onOrder(service.name)">
-          Заказать
-        </button>
-      </mat-card-actions>
-    </mat-card>
+    <ng-container *ngIf="!loading">
+      <mat-card class="card" *ngFor="let service of serviceList">
+        <mat-card-title>{{ service.name }}</mat-card-title>
+        <mat-card-subtitle>пояснение</mat-card-subtitle>
+        <mat-card-content>
+          {{ service.description }}
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button (click)="onOrder(service.name)">
+            Заказать
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+    <ng-container *ngIf="loading">
+      <mat-card
+        class="card"
+        *ngFor="let item of [].constructor(16); let i = index"
+      >
+        <div>
+          <ngx-skeleton-loader
+            count="1"
+            [theme]="{
+              'height.px': 20,
+              'width.px': 200,
+              'margin-bottom.px': 4
+            }"
+          ></ngx-skeleton-loader>
+        </div>
+        <div>
+          <ngx-skeleton-loader
+            count="1"
+            [theme]="{ 'height.px': 10, 'width.px': 100 }"
+          ></ngx-skeleton-loader>
+        </div>
+        <div>
+          <ngx-skeleton-loader
+            count="7"
+            [theme]="{ 'height.px': 10, 'margin-bottom.px': 0 }"
+          ></ngx-skeleton-loader>
+        </div>
+      </mat-card>
+    </ng-container>
   </div>
 </app-layout>
