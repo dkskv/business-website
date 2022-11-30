@@ -1,9 +1,10 @@
 .banner {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   row-gap: 16px;
+  padding-top: 25px;
   // брать из темы
   background-color: #3f51b5;
   height: 300px;
@@ -20,6 +21,12 @@
 .banner__description {
   font-size: 20px;
   font-weight: 300;
+}
+
+.banner__logo {
+  position: absolute;
+  height: 210px;
+  bottom: -20px;
 }
 
 .wrapper {
