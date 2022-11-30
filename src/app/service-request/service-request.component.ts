@@ -6,14 +6,14 @@ import {
   FormGroupDirective,
   Validators,
 } from '@angular/forms';
-import { map, scan, startWith, tap } from 'rxjs';
+import { map, scan, startWith } from 'rxjs';
 import {
   formatPhoneNumber,
   phoneNumberPattern,
 } from 'src/utils/phoneNumberFormatter';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProvidedServicesService } from 'src/services/providedServices.service';
-import { HttpClient } from '@angular/common/http';
+import { SubmitRequestService } from 'src/services/submitRequest.service';
 @Component({
   selector: 'app-service-request',
   templateUrl: './service-request.component.html',
@@ -21,7 +21,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ServiceRequestComponent implements OnInit {
   title = 'Оставить заявку';
-  submitting = false;
 
   formOfRequest = new FormGroup({
     serviceList: new FormControl<string[]>([], [Validators.required]),
@@ -36,7 +35,7 @@ export class ServiceRequestComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
     private providedServicesService: ProvidedServicesService,
-    private http: HttpClient
+    private submitRequestService: SubmitRequestService
   ) {}
 
   ngOnInit() {
@@ -74,26 +73,32 @@ export class ServiceRequestComponent implements OnInit {
     if (this.formOfRequest.valid) {
       const { value } = this.formOfRequest;
 
-      this.submitting = true;
-
-      this.http
-        .post('/service-request', value)
-        .pipe(
-          tap(() => {
-            this.submitting = false;
-          })
-        )
-        .subscribe(() => {
+      this.submitRequestService.submit(value).subscribe({
+        next: () => {
           this.snackBar.open(`${value.name}, Ваша заявка принята!`, undefined, {
             duration: 3000,
           });
           formDirective.resetForm();
-        });
+        },
+        error: () => {
+          this.snackBar.open(
+            `${value.name}, извините, форма обратной связи в данный момент недоступна. С нами можно связаться по телефону`,
+            undefined,
+            {
+              duration: 6000,
+            }
+          );
+        },
+      });
     }
   }
 
   get serviceList() {
     return this.providedServicesService.items;
+  }
+
+  get submitting() {
+    return this.submitRequestService.submitting;
   }
 
   get fillProgress() {

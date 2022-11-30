@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serviceRequestHandlerUrl: 'https://service-request-handler.vercel.app/api',
 };

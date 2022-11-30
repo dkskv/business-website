@@ -20,6 +20,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ProvidedServicesService } from 'src/services/providedServices.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SubmitRequestService } from 'src/services/submitRequest.service';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatProgressBarModule,
     NgxSkeletonLoaderModule,
   ],
-  providers: [ProvidedServicesService],
+  providers: [ProvidedServicesService, SubmitRequestService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

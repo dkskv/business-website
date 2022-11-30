@@ -18,16 +18,10 @@ export class ProvidedServicesService {
   load() {
     this.loading = true;
 
-    this.http
-      .get('assets/providedServices.json')
-      .pipe(
-        tap(() => {
-          this.loading = false;
-        })
-      )
-      .subscribe((data) => {
-        this.loaded = true;
-        this.items = data as IProvidedService[];
-      });
+    this.http.get('assets/providedServices.json').subscribe((data) => {
+      this.loading = false;
+      this.loaded = true;
+      this.items = data as IProvidedService[];
+    });
   }
 }
