@@ -8,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "yarn build --base-href='/business-website/' && gh-pages -d dist"
+    "deploy": "yarn build --base-href='/business-website/' && cp dist/index.html dist/404.html && gh-pages -d dist"
   },
   "private": true,
   "dependencies": {
