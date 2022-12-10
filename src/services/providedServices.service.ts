@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 interface IProvidedService {
   name: string;
+  remark: string;
   description: string;
 }
 
@@ -18,7 +19,7 @@ export class ProvidedServicesService {
   load() {
     this.loading = true;
 
-    this.http.get('assets/providedServices.json').subscribe((data) => {
+    this.http.get(environment.serviceListUrl).subscribe((data) => {
       this.loading = false;
       this.loaded = true;
       this.items = data as IProvidedService[];

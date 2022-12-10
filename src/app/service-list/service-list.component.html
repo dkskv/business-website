@@ -3,7 +3,7 @@
     <ng-container *ngIf="!loading">
       <mat-card class="masonry__card" *ngFor="let service of serviceList">
         <mat-card-title>{{ service.name }}</mat-card-title>
-        <mat-card-subtitle>пояснение</mat-card-subtitle>
+        <mat-card-subtitle>{{ service.remark }}</mat-card-subtitle>
         <mat-card-content>
           {{ service.description }}
         </mat-card-content>

@@ -19,17 +19,15 @@ export class SubmitRequestService {
   submit(value: Partial<ISubmitValue>) {
     this.submitting = true;
 
-    return this.http
-      .post(`${environment.serviceRequestHandlerUrl}/service-request`, value)
-      .pipe(
-        tap({
-          next: () => {
-            this.submitting = false;
-          },
-          error: () => {
-            this.submitting = false;
-          },
-        })
-      );
+    return this.http.post(environment.serviceRequestHandlerUrl, value).pipe(
+      tap({
+        next: () => {
+          this.submitting = false;
+        },
+        error: () => {
+          this.submitting = false;
+        },
+      })
+    );
   }
 }
