@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-interface ISubmitValue {
+export interface IRequest {
   serviceList: string[] | null;
   name: string | null;
   phone: string | null;
@@ -11,12 +11,21 @@ interface ISubmitValue {
 }
 
 @Injectable()
-export class SubmitRequestService {
-  constructor(private http: HttpClient) {}
-
+export class RequestService {
+  private savedRequest: Partial<IRequest> = {};
   submitting = false;
 
-  submit(value: Partial<ISubmitValue>) {
+  constructor(private http: HttpClient) {}
+
+  save(value: Partial<IRequest>) {
+    this.savedRequest = value;
+  }
+
+  restore() {
+    return this.savedRequest;
+  }
+
+  submit(value: Partial<IRequest>) {
     this.submitting = true;
 
     return this.http.post(environment.serviceRequestHandlerUrl, value).pipe(
