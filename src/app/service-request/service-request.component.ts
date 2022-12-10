@@ -78,7 +78,9 @@ export class ServiceRequestComponent implements OnInit, OnDestroy {
       .filter((name) => name === window.history.state.serviceName);
 
     if (initialServiceNames.length > 0) {
-      this.formOfRequest.controls.serviceList.setValue(initialServiceNames);
+      const { serviceList } = this.formOfRequest.controls;
+      const nextValue = initialServiceNames.concat(serviceList.value ?? []);
+      serviceList.setValue(nextValue);
     }
   }
 
