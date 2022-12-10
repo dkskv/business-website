@@ -12,10 +12,9 @@
 }
 
 .banner__title {
-  line-height: 56px;
+  line-height: 48px;
   font-weight: 700;
-  // font-size: 56px;
-  font-size: calc(32px + 2vw);
+  font-size: min(48px, calc(32px + 2vw));
 }
 
 .banner__description {
