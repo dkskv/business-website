@@ -21,6 +21,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ProvidedServicesService } from 'src/services/providedServices.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SubmitRequestService } from 'src/services/submitRequest.service';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SubmitRequestService } from 'src/services/submitRequest.service';
     ServiceRequestComponent,
     ServiceListComponent,
     LayoutComponent,
+    AboutUsComponent,
   ],
   imports: [
     HttpClientModule,

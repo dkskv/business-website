@@ -58,6 +58,9 @@
 
 .benefit__title {
   font-size: 25px;
+  display: flex;
+  align-items: flex-end;
+  column-gap: 8px;
 }
 
 .benefit__description {
