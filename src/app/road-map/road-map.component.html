@@ -7,9 +7,11 @@
         <div class="stage__title">{{ stage.title }}</div>
         <div class="stage__description">{{ stage.description }}</div>
       </div>
-      <mat-icon class="transition" *ngIf="i < stages.length - 1"
-        >arrow_forward</mat-icon
-      >
+      <div class="transition">
+        <mat-icon class="transition__icon" *ngIf="i < stages.length - 1"
+          >arrow_forward</mat-icon
+        >
+      </div>
     </ng-container>
   </div>
 </div>

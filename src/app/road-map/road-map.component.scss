@@ -25,6 +25,11 @@
 }
 
 .transition {
+  display: flex;
+  align-items: center;
+}
+
+.transition__icon {
   @media screen and (max-width: 1024px) {
     transform: rotate(90deg);
   }
