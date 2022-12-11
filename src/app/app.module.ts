@@ -16,12 +16,14 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { LayoutComponent } from './layout/layout.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ProvidedServicesService } from 'src/services/providedServices.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RequestService } from 'src/services/request.service';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { RoadMapComponent } from './road-map/road-map.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     ServiceListComponent,
     LayoutComponent,
     AboutUsComponent,
+    RoadMapComponent,
   ],
   imports: [
     HttpClientModule,
@@ -47,6 +50,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
     MatIconModule,
     MatProgressBarModule,
     NgxSkeletonLoaderModule,
+    MatDividerModule,
   ],
   providers: [ProvidedServicesService, RequestService],
   bootstrap: [AppComponent],

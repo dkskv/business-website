@@ -1,0 +1,15 @@
+<div class="road-map">
+  <div class="road-map__title">Этапы сотрудничества</div>
+  <div class="road-map__content">
+    <ng-container *ngFor="let stage of stages; let i = index">
+      <div class="stage">
+        <mat-icon class="stage__icon">{{ stage.icon }}</mat-icon>
+        <div class="stage__title">{{ stage.title }}</div>
+        <div class="stage__description">{{ stage.description }}</div>
+      </div>
+      <mat-icon class="transition" *ngIf="i < stages.length - 1"
+        >arrow_forward</mat-icon
+      >
+    </ng-container>
+  </div>
+</div>

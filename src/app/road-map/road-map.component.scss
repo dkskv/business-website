@@ -1,0 +1,56 @@
+.road-map {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #0000008a; // todo: брать из темы
+  padding: 50px 16px;
+
+  row-gap: 32px;
+}
+
+.road-map__title {
+  font-size: 25px;
+}
+
+.road-map__content {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.transition {
+  @media screen and (max-width: 1024px) {
+    transform: rotate(90deg);
+  }
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 8px;
+  max-width: 250px;
+}
+
+.stage__icon {
+  $size: 48px;
+
+  font-size: $size;
+  width: $size;
+  height: $size;
+}
+
+.stage__title {
+  font-size: 16px;
+}
+
+.stage__description {
+  font-size: 14px;
+  text-align: center;
+}
