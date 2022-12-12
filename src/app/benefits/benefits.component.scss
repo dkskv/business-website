@@ -1,3 +1,7 @@
+:host {
+  width: 100%;
+}
+
 .benefits-columns {
   display: flex;
   column-gap: 24px;
@@ -5,7 +9,7 @@
   padding: 50px 16px;
   color: #0000008a;
   flex-wrap: wrap;
-  width: 75%;
+  width: 80%;
   box-sizing: border-box;
   margin: auto;
 
@@ -18,7 +22,7 @@
   display: flex;
   flex-direction: column;
   row-gap: 16px;
-  flex-basis: 400px;
+  flex-basis: 350px;
   flex-grow: 1;
 }
 
