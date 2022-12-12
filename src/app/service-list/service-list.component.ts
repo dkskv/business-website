@@ -19,7 +19,7 @@ export class ServiceListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (!this.servicesService.loaded) {
+    if (this.servicesService.pristine) {
       this.servicesService.load();
     }
 

@@ -14,12 +14,11 @@ export class AboutUsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // todo: некорректная проверка
-    if (!this.benefitsService.loaded) {
+    if (this.benefitsService.pristine) {
       this.benefitsService.load();
     }
 
-    if (!this.cooperationStagesService.loaded) {
+    if (this.cooperationStagesService.pristine) {
       this.cooperationStagesService.load();
     }
   }

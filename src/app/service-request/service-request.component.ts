@@ -39,7 +39,7 @@ export class ServiceRequestComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    if (!this.servicesService.loaded) {
+    if (this.servicesService.pristine) {
       this.servicesService.load();
     }
 
