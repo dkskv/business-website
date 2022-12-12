@@ -13,5 +13,5 @@ export class RoadMapComponent {
   @Input()
   stages: ICooperationStage[] = [];
 
-  skeletonsCount = 5;
+  skeletonCount = 5;
 }

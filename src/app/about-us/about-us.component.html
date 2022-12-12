@@ -5,35 +5,7 @@
     <img class="banner__logo" src="assets/img/man.svg" />
   </div>
   <div class="content-container">
-    <div class="benefits-columns">
-      <ng-container *ngIf="!isBenefitsLoaded">
-        <ng-container *ngFor="let _ of [].constructor(3)">
-          <div class="benefit">
-            <ngx-skeleton-loader
-              count="1"
-              [theme]="{ 'height.px': 20, 'width.px': 200 }"
-            ></ngx-skeleton-loader>
-            <ngx-skeleton-loader
-              count="4"
-              [theme]="{ 'height.px': 10 }"
-            ></ngx-skeleton-loader>
-          </div>
-        </ng-container>
-      </ng-container>
-      <ng-container *ngIf="isBenefitsLoaded">
-        <ng-container *ngFor="let item of benefits">
-          <div class="benefit">
-            <div class="benefit__title">
-              <mat-icon>{{ item.icon }}</mat-icon
-              >{{ item.name }}
-            </div>
-            <div class="benefit__description">
-              {{ item.description }}
-            </div>
-          </div>
-        </ng-container>
-      </ng-container>
-    </div>
+    <benefits [loading]="!isBenefitsLoaded" [items]="benefits"></benefits>
     <mat-divider class="divider"></mat-divider>
     <road-map
       [loading]="!isCooperationStagesLoaded"

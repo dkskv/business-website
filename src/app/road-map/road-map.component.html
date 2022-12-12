@@ -3,7 +3,7 @@
   <div class="road-map__content">
     <ng-container *ngIf="loading">
       <ng-container
-        *ngFor="let _ of [].constructor(skeletonsCount); let i = index"
+        *ngFor="let _ of [].constructor(skeletonCount); let i = index"
       >
         <div class="stage">
           <ngx-skeleton-loader
@@ -20,7 +20,7 @@
           ></ngx-skeleton-loader>
         </div>
         <div class="transition">
-          <mat-icon class="transition__icon" *ngIf="i < skeletonsCount - 1"
+          <mat-icon class="transition__icon" *ngIf="i < skeletonCount - 1"
             >arrow_forward</mat-icon
           >
         </div>

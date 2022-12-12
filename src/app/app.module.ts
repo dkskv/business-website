@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -26,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RequestService } from 'src/services/request.service';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RoadMapComponent } from './road-map/road-map.component';
+import { BenefitsComponent } from './benefits/benefits.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { RoadMapComponent } from './road-map/road-map.component';
     LayoutComponent,
     AboutUsComponent,
     RoadMapComponent,
+    BenefitsComponent,
   ],
   imports: [
     HttpClientModule,

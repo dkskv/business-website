@@ -1,0 +1,29 @@
+<div class="benefits-columns">
+  <ng-container *ngIf="loading">
+    <ng-container *ngFor="let _ of [].constructor(skeletonCount)">
+      <div class="benefit">
+        <ngx-skeleton-loader
+          count="1"
+          [theme]="{ 'height.px': 20, 'width.px': 200 }"
+        ></ngx-skeleton-loader>
+        <ngx-skeleton-loader
+          count="4"
+          [theme]="{ 'height.px': 10 }"
+        ></ngx-skeleton-loader>
+      </div>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="!loading">
+    <ng-container *ngFor="let item of items">
+      <div class="benefit">
+        <div class="benefit__title">
+          <mat-icon>{{ item.icon }}</mat-icon
+          >{{ item.name }}
+        </div>
+        <div class="benefit__description">
+          {{ item.description }}
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>
