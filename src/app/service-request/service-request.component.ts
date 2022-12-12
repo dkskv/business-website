@@ -12,7 +12,7 @@ import {
   phoneNumberPattern,
 } from 'src/utils/phoneNumberFormatter';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ProvidedServicesService } from 'src/services/providedServices.service';
+import { ServicesService } from 'src/services/services.service';
 import { IRequest, RequestService } from 'src/services/request.service';
 @Component({
   selector: 'app-service-request',
@@ -34,13 +34,13 @@ export class ServiceRequestComponent implements OnInit, OnDestroy {
 
   constructor(
     private snackBar: MatSnackBar,
-    private providedServicesService: ProvidedServicesService,
+    private servicesService: ServicesService,
     private requestService: RequestService
   ) {}
 
   ngOnInit() {
-    if (!this.providedServicesService.loaded) {
-      this.providedServicesService.load();
+    if (!this.servicesService.loaded) {
+      this.servicesService.load();
     }
 
     this.restoreValues();
@@ -116,7 +116,7 @@ export class ServiceRequestComponent implements OnInit, OnDestroy {
   }
 
   get serviceList() {
-    return this.providedServicesService.items;
+    return this.servicesService.items;
   }
 
   get submitting() {

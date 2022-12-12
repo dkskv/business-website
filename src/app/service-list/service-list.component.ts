@@ -1,7 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProvidedServicesService } from 'src/services/providedServices.service';
+import { ServicesService } from 'src/services/services.service';
 
 @Component({
   selector: 'app-service-list',
@@ -13,14 +13,14 @@ export class ServiceListComponent implements OnInit {
   columnCount = 1;
 
   constructor(
-    private providedServicesService: ProvidedServicesService,
+    private servicesService: ServicesService,
     private router: Router,
     private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
-    if (!this.providedServicesService.loaded) {
-      this.providedServicesService.load();
+    if (!this.servicesService.loaded) {
+      this.servicesService.load();
     }
 
     this.breakpointObserver
@@ -35,11 +35,11 @@ export class ServiceListComponent implements OnInit {
   }
 
   get loading() {
-    return this.providedServicesService.loading;
+    return this.servicesService.loading;
   }
 
   get serviceList() {
-    return this.providedServicesService.items;
+    return this.servicesService.items;
   }
 
   onOrder(serviceName: string) {

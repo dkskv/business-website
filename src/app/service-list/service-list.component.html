@@ -1,4 +1,4 @@
-<app-layout title="{{ title }}">
+<app-layout [title]="title">
   <div class="masonry" [style.column-count]="columnCount">
     <ng-container *ngIf="!loading">
       <mat-card class="masonry__card" *ngFor="let service of serviceList">
@@ -15,10 +15,7 @@
       </mat-card>
     </ng-container>
     <ng-container *ngIf="loading">
-      <mat-card
-        class="masonry__card"
-        *ngFor="let item of [].constructor(16); let i = index"
-      >
+      <mat-card class="masonry__card" *ngFor="let _ of [].constructor(16)">
         <div>
           <ngx-skeleton-loader
             count="1"

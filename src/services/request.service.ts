@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { apiUrls } from 'src/utils/apiUrls';
 
 export interface IRequest {
   serviceList: string[] | null;
@@ -28,7 +28,7 @@ export class RequestService {
   submit(value: Partial<IRequest>) {
     this.submitting = true;
 
-    return this.http.post(environment.serviceRequestHandlerUrl, value).pipe(
+    return this.http.post(apiUrls.serviceRequest, value).pipe(
       tap({
         next: () => {
           this.submitting = false;

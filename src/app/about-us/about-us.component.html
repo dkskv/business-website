@@ -6,32 +6,38 @@
   </div>
   <div class="content-container">
     <div class="benefits-columns">
-      <div class="benefit">
-        <div class="benefit__title">
-          <mat-icon>electric_bolt</mat-icon>Быстро
-        </div>
-        <div class="benefit__description">
-          очень очень. Делаем красиво. Без лишних наценок и разговоров.
-        </div>
-      </div>
-      <div class="benefit">
-        <div class="benefit__title">
-          <mat-icon>verified_user</mat-icon>Надежно
-        </div>
-        <div class="benefit__description">
-          очень очень. Делаем красиво. Без лишних наценок и разговоров.
-        </div>
-      </div>
-      <div class="benefit">
-        <div class="benefit__title">
-          <mat-icon>thumb_up</mat-icon>Качественно
-        </div>
-        <div class="benefit__description">
-          очень очень. Делаем красиво. Без лишних наценок и разговоров.
-        </div>
-      </div>
+      <ng-container *ngIf="!isBenefitsLoaded">
+        <ng-container *ngFor="let _ of [].constructor(3)">
+          <div class="benefit">
+            <ngx-skeleton-loader
+              count="1"
+              [theme]="{ 'height.px': 20, 'width.px': 200 }"
+            ></ngx-skeleton-loader>
+            <ngx-skeleton-loader
+              count="4"
+              [theme]="{ 'height.px': 10 }"
+            ></ngx-skeleton-loader>
+          </div>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="isBenefitsLoaded">
+        <ng-container *ngFor="let item of benefits">
+          <div class="benefit">
+            <div class="benefit__title">
+              <mat-icon>{{ item.icon }}</mat-icon
+              >{{ item.name }}
+            </div>
+            <div class="benefit__description">
+              {{ item.description }}
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
     <mat-divider class="divider"></mat-divider>
-    <road-map></road-map>
+    <road-map
+      [loading]="!isCooperationStagesLoaded"
+      [stages]="cooperationStages"
+    ></road-map>
   </div>
 </div>

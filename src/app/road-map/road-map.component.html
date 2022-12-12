@@ -1,17 +1,44 @@
 <div class="road-map">
   <div class="road-map__title">Этапы сотрудничества</div>
   <div class="road-map__content">
-    <ng-container *ngFor="let stage of stages; let i = index">
-      <div class="stage">
-        <mat-icon class="stage__icon">{{ stage.icon }}</mat-icon>
-        <div class="stage__title">{{ stage.title }}</div>
-        <div class="stage__description">{{ stage.description }}</div>
-      </div>
-      <div class="transition">
-        <mat-icon class="transition__icon" *ngIf="i < stages.length - 1"
-          >arrow_forward</mat-icon
-        >
-      </div>
+    <ng-container *ngIf="loading">
+      <ng-container
+        *ngFor="let _ of [].constructor(skeletonsCount); let i = index"
+      >
+        <div class="stage">
+          <ngx-skeleton-loader
+            count="1"
+            [theme]="{ 'height.px': 40, 'width.px': 40 }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            count="1"
+            [theme]="{ 'height.px': 10, 'width.px': 100 }"
+          ></ngx-skeleton-loader>
+          <ngx-skeleton-loader
+            count="4"
+            [theme]="{ 'height.px': 5, 'width.px': 250 }"
+          ></ngx-skeleton-loader>
+        </div>
+        <div class="transition">
+          <mat-icon class="transition__icon" *ngIf="i < skeletonsCount - 1"
+            >arrow_forward</mat-icon
+          >
+        </div>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="!loading">
+      <ng-container *ngFor="let item of stages; let i = index">
+        <div class="stage">
+          <mat-icon class="stage__icon">{{ item.icon }}</mat-icon>
+          <div class="stage__title">{{ item.name }}</div>
+          <div class="stage__description">{{ item.description }}</div>
+        </div>
+        <div class="transition">
+          <mat-icon class="transition__icon" *ngIf="i < stages.length - 1"
+            >arrow_forward</mat-icon
+          >
+        </div>
+      </ng-container>
     </ng-container>
   </div>
 </div>

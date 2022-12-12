@@ -19,7 +19,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { LayoutComponent } from './layout/layout.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { ProvidedServicesService } from 'src/services/providedServices.service';
+import { ServicesService } from 'src/services/services.service';
+import { BenefitsService } from 'src/services/benefits.service';
+import { CooperationStagesService } from 'src/services/cooperationStages.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RequestService } from 'src/services/request.service';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -52,7 +54,12 @@ import { RoadMapComponent } from './road-map/road-map.component';
     NgxSkeletonLoaderModule,
     MatDividerModule,
   ],
-  providers: [ProvidedServicesService, RequestService],
+  providers: [
+    ServicesService,
+    BenefitsService,
+    CooperationStagesService,
+    RequestService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ICooperationStage } from 'src/services/cooperationStages.service';
 
 @Component({
   selector: 'road-map',
@@ -6,36 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./road-map.component.scss'],
 })
 export class RoadMapComponent {
-  stages = [
-    {
-      title: 'Уточнение заявки',
-      icon: 'fact_check',
-      description:
-        'Уточняем детали заявки. Проверяем доступность мастеров нужной специальности. По возможности стараемся назвать Вам ориентировочную стоимость.',
-    },
-    {
-      title: 'Выезд мастера на замер',
-      icon: 'directions_car',
-      description:
-        'Замер осуществляется бесплатно. Расскажите мастеру о дополнительных нюансах и пожеланиях.',
-    },
-    {
-      title: 'Согласование стоимости',
-      icon: 'price_check',
-      description:
-        'После замера мы окончательно оцениваем стоимость трудозатрат и материалов. В течение суток набираем Вам и называем стоимость.',
-    },
-    {
-      title: 'Выполнение работ',
-      icon: 'engineering',
-      description:
-        'Мы приступаем к работе сразу, чтобы в короткие сроки получить запланированный результат.',
-    },
-    {
-      title: 'Проверка результата и оплата',
-      icon: 'verified',
-      description:
-        'Вы проверяете качество выполненных работ. При выявлении недочетов мы оперативно их исправляем. Далее производится оплата.',
-    },
-  ];
+  @Input()
+  loading = false;
+
+  @Input()
+  stages: ICooperationStage[] = [];
+
+  skeletonsCount = 5;
 }
