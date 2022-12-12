@@ -13,5 +13,5 @@ export class BenefitsComponent {
   @Input()
   items: IBenefit[] = [];
 
-  skeletonCount = 5;
+  skeletonCount = 3;
 }
