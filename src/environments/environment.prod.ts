@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://service-request-handler.vercel.app/api',
+  apiUrl: 'https://construction-works.vercel.app/api',
 };
