@@ -1,8 +1,10 @@
+@import "../../styles.scss";
+
 .road-map {
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: #0000008a; // todo: брать из темы
+  color: map-get($foreground, secondary-text);
   padding: 20px 16px 50px;
 
   row-gap: 32px;

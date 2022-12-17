@@ -1,7 +1,8 @@
+@import "../../styles.scss";
+
 .section-header {
   height: 80px;
-  // брать из темы
-  background-color: #3f51b5;
+  background-color: map-get($primary, 500);
   color: white;
   display: flex;
   align-items: center;
