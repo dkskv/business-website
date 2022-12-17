@@ -1,7 +1,6 @@
 {
   "name": "construction-works-frontend",
   "version": "0.0.0",
-  "homepage": "/construction-works-frontend/#",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,7 +8,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "yarn build --base-href='/construction-works-frontend/' && cp dist/index.html dist/404.html && gh-pages -d dist"
+    "deploy": "yarn build && cp dist/index.html dist/404.html && gh-pages -d dist"
   },
   "private": true,
   "dependencies": {
