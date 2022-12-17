@@ -6,7 +6,7 @@
   </div>
   <div class="content-container">
     <benefits [loading]="!isBenefitsLoaded" [items]="benefits"></benefits>
-    <mat-divider class="divider"></mat-divider>
+    <section-header [title]="'Этапы сотрудничества'"></section-header>
     <road-map
       [loading]="!isCooperationStagesLoaded"
       [stages]="cooperationStages"

@@ -15,7 +15,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
 import { LayoutComponent } from './layout/layout.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ServicesService } from 'src/services/services.service';
@@ -26,6 +25,7 @@ import { RequestService } from 'src/services/request.service';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { RoadMapComponent } from './road-map/road-map.component';
 import { BenefitsComponent } from './benefits/benefits.component';
+import { SectionHeaderComponent } from './section-header/section-header.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { BenefitsComponent } from './benefits/benefits.component';
     AboutUsComponent,
     RoadMapComponent,
     BenefitsComponent,
+    SectionHeaderComponent,
   ],
   imports: [
     HttpClientModule,
@@ -53,7 +54,6 @@ import { BenefitsComponent } from './benefits/benefits.component';
     MatIconModule,
     MatProgressBarModule,
     NgxSkeletonLoaderModule,
-    MatDividerModule,
   ],
   providers: [
     ServicesService,
