@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ICooperationStage } from 'src/services/cooperationStages.service';
+import { IServiceDeliveryStage } from 'src/services/serviceDeliveryStages.service';
 
 @Component({
   selector: 'road-map',
@@ -11,7 +11,7 @@ export class RoadMapComponent {
   loading = false;
 
   @Input()
-  stages: ICooperationStage[] = [];
+  stages: IServiceDeliveryStage[] = [];
 
   skeletonCount = 5;
 }

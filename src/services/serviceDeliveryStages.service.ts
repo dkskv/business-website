@@ -3,18 +3,18 @@ import { Injectable } from '@angular/core';
 import { apiUrls } from 'src/utils/apiUrls';
 import { FetchService } from './fetch.service';
 
-export interface ICooperationStage {
+export interface IServiceDeliveryStage {
   name: string;
   icon: string;
   description: string;
 }
 
 @Injectable()
-export class CooperationStagesService extends FetchService<
-  ICooperationStage[]
+export class ServiceDeliveryStagesService extends FetchService<
+  IServiceDeliveryStage[]
 > {
   constructor(http: HttpClient) {
-    super(http, apiUrls.cooperationStages);
+    super(http, apiUrls.serviceDeliveryStages);
   }
 
   get items() {

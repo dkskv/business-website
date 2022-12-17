@@ -6,5 +6,5 @@ export const apiUrls = {
   serviceRequest: `${baseUrl}/service-request`,
   services: `${baseUrl}/services`,
   benefits: `${baseUrl}/benefits`,
-  cooperationStages: `${baseUrl}/cooperation-stages`,
+  serviceDeliveryStages: `${baseUrl}/service-delivery-stages`,
 };

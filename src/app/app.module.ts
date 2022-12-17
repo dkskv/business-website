@@ -19,7 +19,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { ServicesService } from 'src/services/services.service';
 import { BenefitsService } from 'src/services/benefits.service';
-import { CooperationStagesService } from 'src/services/cooperationStages.service';
+import { ServiceDeliveryStagesService } from 'src/services/serviceDeliveryStages.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RequestService } from 'src/services/request.service';
 import { AboutUsComponent } from './about-us/about-us.component';
@@ -58,7 +58,7 @@ import { SectionHeaderComponent } from './section-header/section-header.componen
   providers: [
     ServicesService,
     BenefitsService,
-    CooperationStagesService,
+    ServiceDeliveryStagesService,
     RequestService,
   ],
   bootstrap: [AppComponent],

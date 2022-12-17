@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BenefitsService } from 'src/services/benefits.service';
-import { CooperationStagesService } from 'src/services/cooperationStages.service';
+import { ServiceDeliveryStagesService } from 'src/services/serviceDeliveryStages.service';
 
 @Component({
   selector: 'app-about-us',
@@ -10,7 +10,7 @@ import { CooperationStagesService } from 'src/services/cooperationStages.service
 export class AboutUsComponent implements OnInit {
   constructor(
     private benefitsService: BenefitsService,
-    private cooperationStagesService: CooperationStagesService
+    private serviceDeliveryStagesService: ServiceDeliveryStagesService
   ) {}
 
   ngOnInit() {
@@ -18,8 +18,8 @@ export class AboutUsComponent implements OnInit {
       this.benefitsService.load();
     }
 
-    if (this.cooperationStagesService.pristine) {
-      this.cooperationStagesService.load();
+    if (this.serviceDeliveryStagesService.pristine) {
+      this.serviceDeliveryStagesService.load();
     }
   }
 
@@ -31,11 +31,11 @@ export class AboutUsComponent implements OnInit {
     return this.benefitsService.items;
   }
 
-  get isCooperationStagesLoaded() {
-    return this.cooperationStagesService.loaded;
+  get isServiceDeliveryStagesLoaded() {
+    return this.serviceDeliveryStagesService.loaded;
   }
 
-  get cooperationStages() {
-    return this.cooperationStagesService.items;
+  get serviceDeliveryStages() {
+    return this.serviceDeliveryStagesService.items;
   }
 }
