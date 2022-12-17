@@ -1,11 +1,13 @@
-@import "../../styles.scss";
+:host {
+  width: 100%;
+}
 
 .benefits-columns {
   display: flex;
   column-gap: 24px;
   row-gap: 24px;
   padding: 50px 16px;
-  color: map-get($foreground, secondary-text);
+  color: #0000008a;
   flex-wrap: wrap;
   width: 80%;
   box-sizing: border-box;
