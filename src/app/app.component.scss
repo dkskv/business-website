@@ -1,3 +1,5 @@
+$nav-height: 65px;
+
 .main {
   display: flex;
   flex-direction: column;
@@ -8,7 +10,7 @@
 }
 
 .main__header {
-  height: 65px;
+  height: $nav-height;
   width: 100%;
   position: fixed;
   z-index: 1;
@@ -17,6 +19,6 @@
 
 .main__content {
   height: 100%;
-  padding-top: 64px;
+  padding-top: $nav-height;
   box-sizing: border-box;
 }

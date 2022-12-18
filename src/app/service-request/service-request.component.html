@@ -1,64 +1,70 @@
 <app-layout [title]="title">
   <div class="wrapper">
     <div class="ground">
-      <mat-progress-bar
-        mode="determinate"
-        value="{{ fillProgress }}"
-      ></mat-progress-bar>
-      <form
-        class="form-container"
-        #formDirective="ngForm"
-        [formGroup]="formOfRequest"
-        (ngSubmit)="onSubmit(formDirective)"
-      >
-        <mat-form-field appearance="fill">
-          <mat-label>Услуги</mat-label>
-          <mat-select formControlName="serviceList" multiple>
-            <mat-option
-              *ngFor="let service of serviceList"
-              [value]="service.name"
-              >{{ service.name }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Имя</mat-label>
-          <input matInput placeholder="Имя" formControlName="name" />
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Номер телефона</mat-label>
-          <input
-            matInput
-            placeholder="8 (999) 123-45-67"
-            formControlName="phone"
-            (blur)="onPhoneNumberBlur()"
-          />
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Комментарий</mat-label>
-          <textarea
-            rows="4"
-            matInput
-            placeholder="Комментарий"
-            formControlName="comment"
-          ></textarea>
-        </mat-form-field>
-
-        <button
-          type="submit"
-          mat-raised-button
-          color="primary"
-          [disabled]="formOfRequest.invalid || submitting"
+      <div class="form-container">
+        <mat-progress-bar
+          mode="determinate"
+          value="{{ fillProgress }}"
+        ></mat-progress-bar>
+        <form
+          class="form"
+          #formDirective="ngForm"
+          [formGroup]="formOfRequest"
+          (ngSubmit)="onSubmit(formDirective)"
         >
-          <div class="submit-button__content">
-            <mat-spinner *ngIf="submitting" diameter="15"></mat-spinner>
-            Отправить
+          <mat-form-field appearance="fill">
+            <mat-label>Услуги</mat-label>
+            <mat-select formControlName="serviceList" multiple>
+              <mat-option
+                *ngFor="let service of serviceList"
+                [value]="service.name"
+                >{{ service.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Имя</mat-label>
+            <input matInput placeholder="Имя" formControlName="name" />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Номер телефона</mat-label>
+            <input
+              matInput
+              placeholder="8 (999) 123-45-67"
+              formControlName="phone"
+              (blur)="onPhoneNumberBlur()"
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Комментарий</mat-label>
+            <textarea
+              rows="4"
+              matInput
+              placeholder="Комментарий"
+              formControlName="comment"
+            ></textarea>
+          </mat-form-field>
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="formOfRequest.invalid || submitting"
+          >
+            <div class="submit-button__content">
+              <mat-spinner *ngIf="submitting" diameter="15"></mat-spinner>
+              Отправить
+            </div>
+          </button>
+        </form>
+      </div>
+      <div class="footnote">
+        Возникли проблемы с формой заявки? Звоните
+        <ng-container *ngFor="let phoneNumber of phoneNumbers">
+          <div class="footnote__phone">
+            <a href="tel:{{ phoneNumber }}">{{ phoneNumber }}</a>
           </div>
-        </button>
-      </form>
+        </ng-container>
+      </div>
     </div>
   </div>
 </app-layout>

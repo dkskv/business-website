@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { phoneNumbers } from 'src/utils/contacts';
 import { formatPhoneNumber } from 'src/utils/phoneNumberFormatter';
 
 @Component({
@@ -16,7 +17,7 @@ export class NavBarComponent {
 
   constructor(private _snackBar: MatSnackBar) {}
 
-  phoneNumber = '+79991234567';
+  phoneNumber = phoneNumbers[0];
 
   get formattedPhoneNumber() {
     return formatPhoneNumber(this.phoneNumber);

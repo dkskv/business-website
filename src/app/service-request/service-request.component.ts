@@ -14,6 +14,7 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServicesService } from 'src/services/services.service';
 import { IRequest, RequestService } from 'src/services/request.service';
+import { phoneNumbers } from 'src/utils/contacts';
 @Component({
   selector: 'app-service-request',
   templateUrl: './service-request.component.html',
@@ -21,6 +22,7 @@ import { IRequest, RequestService } from 'src/services/request.service';
 })
 export class ServiceRequestComponent implements OnInit, OnDestroy {
   title = 'Оставить заявку';
+  phoneNumbers = phoneNumbers.map(formatPhoneNumber);
 
   formOfRequest = new FormGroup({
     serviceList: new FormControl<string[]>([], [Validators.required]),
