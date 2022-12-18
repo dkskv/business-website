@@ -9,7 +9,7 @@ import { ServicesService } from 'src/services/services.service';
   styleUrls: ['./service-list.component.scss'],
 })
 export class ServiceListComponent implements OnInit {
-  title = 'Список услуг';
+  title = 'Наши услуги';
   columnCount = 1;
 
   constructor(

@@ -11,7 +11,7 @@ import { formatPhoneNumber } from 'src/utils/phoneNumberFormatter';
 export class NavBarComponent {
   routes = [
     { link: '/about-us', label: 'О нас' },
-    { link: '/service-list', label: 'Список услуг' },
+    { link: '/service-list', label: 'Наши услуги' },
     { link: '/service-request', label: 'Оставить заявку' },
   ];
 
