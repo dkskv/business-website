@@ -1,6 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RequestService } from 'src/services/request.service';
 import { ServicesService } from 'src/services/services.service';
 
 @Component({
@@ -14,6 +15,7 @@ export class ServiceListComponent implements OnInit {
 
   constructor(
     private servicesService: ServicesService,
+    private requestService: RequestService,
     private router: Router,
     private breakpointObserver: BreakpointObserver
   ) {}
@@ -42,7 +44,25 @@ export class ServiceListComponent implements OnInit {
     return this.servicesService.items;
   }
 
+  getOrderButtonText(serviceName: string) {
+    if (!this.requestService.form.touched) {
+      return 'Заказать';
+    }
+
+    return this.requestService.isServiceSelected(serviceName)
+      ? 'Убрать из заявки'
+      : 'Добавить к заявке';
+  }
+
   onOrder(serviceName: string) {
-    this.router.navigate(['/service-request'], { state: { serviceName } });
+    if (!this.requestService.form.touched) {
+      this.requestService.selectService(serviceName);
+      this.router.navigate(['/service-request']);
+      return;
+    }
+
+    this.requestService.isServiceSelected(serviceName)
+      ? this.requestService.deselectService(serviceName)
+      : this.requestService.selectService(serviceName);
   }
 }

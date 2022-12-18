@@ -9,7 +9,7 @@
         </mat-card-content>
         <mat-card-actions>
           <button mat-stroked-button (click)="onOrder(service.name)">
-            Заказать
+            {{ getOrderButtonText(service.name) }}
           </button>
         </mat-card-actions>
       </mat-card>

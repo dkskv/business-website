@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
   FormControl,
@@ -7,32 +7,20 @@ import {
   Validators,
 } from '@angular/forms';
 import { map, scan, startWith } from 'rxjs';
-import {
-  formatPhoneNumber,
-  phoneNumberPattern,
-} from 'src/utils/phoneNumberFormatter';
+import { formatPhoneNumber } from 'src/utils/phoneNumberFormatter';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ServicesService } from 'src/services/services.service';
-import { IRequest, RequestService } from 'src/services/request.service';
+import { RequestService } from 'src/services/request.service';
 import { phoneNumbers } from 'src/utils/contacts';
 @Component({
   selector: 'app-service-request',
   templateUrl: './service-request.component.html',
   styleUrls: ['./service-request.component.scss'],
 })
-export class ServiceRequestComponent implements OnInit, OnDestroy {
+export class ServiceRequestComponent implements OnInit {
   title = 'Оставить заявку';
   phoneNumbers = phoneNumbers.map(formatPhoneNumber);
-
-  formOfRequest = new FormGroup({
-    serviceList: new FormControl<string[]>([], [Validators.required]),
-    name: new FormControl('', [Validators.required, Validators.minLength(1)]),
-    phone: new FormControl('', [
-      Validators.required,
-      Validators.pattern(phoneNumberPattern),
-    ]),
-    comment: new FormControl(''),
-  });
+  formOfRequest = this.requestService.form;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -44,9 +32,6 @@ export class ServiceRequestComponent implements OnInit, OnDestroy {
     if (this.servicesService.pristine) {
       this.servicesService.load();
     }
-
-    this.restoreValues();
-    this.retrieveOrder();
 
     this.phoneControl.valueChanges
       .pipe(
@@ -61,31 +46,6 @@ export class ServiceRequestComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
-    const { value } = this.formOfRequest;
-    this.requestService.save(value);
-  }
-
-  private restoreValues() {
-    const values = this.requestService.restore();
-
-    for (const [key, value] of Object.entries(values)) {
-      this.formOfRequest.controls[key as keyof IRequest].setValue(value as any);
-    }
-  }
-
-  private retrieveOrder() {
-    const initialServiceNames = this.serviceList
-      .map(({ name }) => name)
-      .filter((name) => name === window.history.state.serviceName);
-
-    if (initialServiceNames.length > 0) {
-      const { serviceList } = this.formOfRequest.controls;
-      const nextValue = initialServiceNames.concat(serviceList.value ?? []);
-      serviceList.setValue(nextValue);
-    }
-  }
-
   onPhoneNumberBlur() {
     const { value } = this.phoneControl;
     if (value) {
@@ -97,7 +57,7 @@ export class ServiceRequestComponent implements OnInit, OnDestroy {
     if (this.formOfRequest.valid) {
       const { value } = this.formOfRequest;
 
-      this.requestService.submit(value).subscribe({
+      this.requestService.submit().subscribe({
         next: () => {
           this.snackBar.open(`${value.name}, Ваша заявка принята!`, undefined, {
             duration: 3000,
