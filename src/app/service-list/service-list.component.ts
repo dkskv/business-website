@@ -45,7 +45,7 @@ export class ServiceListComponent implements OnInit {
   }
 
   getOrderButtonText(serviceName: string) {
-    if (!this.requestService.form.touched) {
+    if (this.requestService.form.pristine) {
       return 'Заказать';
     }
 
@@ -55,7 +55,7 @@ export class ServiceListComponent implements OnInit {
   }
 
   onOrder(serviceName: string) {
-    if (!this.requestService.form.touched) {
+    if (this.requestService.form.pristine) {
       this.requestService.selectService(serviceName);
       this.router.navigate(['/service-request']);
       return;

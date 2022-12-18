@@ -35,6 +35,7 @@ export class RequestService {
   selectService(name: string) {
     const nextValue = [name, ...this.serviceList];
     this.form.controls.serviceList.setValue(nextValue);
+    this.form.controls.serviceList.markAsDirty();
   }
 
   deselectService(name: string) {
