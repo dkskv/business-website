@@ -1,1 +1,1 @@
-export const phoneNumbers = ['+79991234567', '+79991234567'];
+export const phoneNumbers = ['+79022338611', '+79933908683'];
