@@ -40,21 +40,27 @@ export class ServiceListComponent implements OnInit {
     return this.servicesService.loading;
   }
 
-  get serviceList() {
-    return this.servicesService.items;
+  get servicesViews() {
+    const isRequestPristine = this.requestService.form.pristine;
+
+    return this.servicesService.items.map((item) => {
+      const isSelected = this.requestService.isServiceSelected(item.name);
+
+      return {
+        ...item,
+        orderButton: {
+          text: isRequestPristine
+            ? 'Заказать'
+            : isSelected
+            ? 'Убрать из заявки'
+            : 'Добавить к заявке',
+          color: isSelected ? 'basic' : 'primary',
+        },
+      };
+    });
   }
 
-  getOrderButtonText(serviceName: string) {
-    if (this.requestService.form.pristine) {
-      return 'Заказать';
-    }
-
-    return this.requestService.isServiceSelected(serviceName)
-      ? 'Убрать из заявки'
-      : 'Добавить к заявке';
-  }
-
-  onOrder(serviceName: string) {
+  onOrderButtonClick(serviceName: string) {
     if (this.requestService.form.pristine) {
       this.requestService.selectService(serviceName);
       this.router.navigate(['/service-request']);

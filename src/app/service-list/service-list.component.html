@@ -1,15 +1,19 @@
 <app-layout [title]="title">
   <div class="masonry" [style.column-count]="columnCount">
     <ng-container *ngIf="!loading">
-      <mat-card class="masonry__card" *ngFor="let service of serviceList">
-        <mat-card-title>{{ service.name }}</mat-card-title>
-        <mat-card-subtitle>{{ service.remark }}</mat-card-subtitle>
+      <mat-card class="masonry__card" *ngFor="let serviceView of servicesViews">
+        <mat-card-title>{{ serviceView.name }}</mat-card-title>
+        <mat-card-subtitle>{{ serviceView.remark }}</mat-card-subtitle>
         <mat-card-content>
-          {{ service.description }}
+          {{ serviceView.description }}
         </mat-card-content>
         <mat-card-actions>
-          <button mat-stroked-button (click)="onOrder(service.name)">
-            {{ getOrderButtonText(service.name) }}
+          <button
+            mat-flat-button
+            [color]="serviceView.orderButton.color"
+            (click)="onOrderButtonClick(serviceView.name)"
+          >
+            {{ serviceView.orderButton.text }}
           </button>
         </mat-card-actions>
       </mat-card>
